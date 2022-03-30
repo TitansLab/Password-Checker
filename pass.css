@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display&display=swap");
+body {
+  font-family: "Playfair Display", serif;
+  background-size: cover;
+  background-image:linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(https://images.wallpaperscraft.com/image/single/deer_art_vector_134088_3840x2400.jpg);
+}
+
+h1 {
+  color: #f7c926;
+  text-align: center;
+  font-size: 27px;
+}
+
+#wrapper {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+#box {
+  max-width: 750px;
+  width: 100%;
+}
+
+.pass-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 20px 0;
+}
+
+#svg {
+  width: 300px;
+  height: 300px;
+  display: block;
+  padding: 20px;
+}
+
+#input-wrapper {
+  position: relative;
+  height: 40px;
+}
+#input-wrapper label {
+  display: block;
+  width: 100%;
+  pointer-events: none;
+  color: #f7c926;
+  position: absolute;
+  bottom: 10px;
+  transition-duration: 0.3s;
+  font-size: 18px;
+  opacity: 1;
+  left: 10px;
+}
+#input-wrapper #pwd:valid + label, #input-wrapper #pwd:focus + label {
+  bottom: 35px;
+  font-size: 14px;
+  opacity: 0;
+}
+
+#pwd {
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: rgba(247, 201, 38, 0.2);
+  caret-color: #FFFFFF;
+  font-size: 25px;
+  color: #f7c926;
+  border-radius: 7px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  line-height: 40px;
+  height: 100%;
+  border: 3px solid #f7c926;
+}
+
+.levels-container {
+  width: 60%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 10px 0 0 0;
+  border-radius: 7px;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.levels-container .level-line {
+  margin: 15px 0;
+  align-items: center;
+  display: flex;
+  color: rgba(255, 255, 255, 0);
+}
+.levels-container .level-line .line-label {
+  width: 30%;
+  color: #f7c926;
+  padding: 0 20px 0 0;
+  text-align: center;
+  transition-duration: 0.3s;
+}
+.levels-container .level-line .line-progression {
+  width: 50%;
+  position: relative;
+  height: 5px;
+  -webkit-animation: glowBar 0.6s ease-in-out infinite alternate;
+          animation: glowBar 0.6s ease-in-out infinite alternate;
+}
+.levels-container .level-line .line-progression:before, .levels-container .level-line .line-progression:after {
+  content: "";
+  display: block;
+  height: 5px;
+  position: absolute;
+  border-radius: 2px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.levels-container .level-line .line-progression:before {
+  background-color: rgba(247, 201, 38, 0.2);
+  width: 100%;
+}
+.levels-container .level-line .line-progression:after {
+  transition-duration: 0.9s;
+  background-color: #f7c926;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  border-style: solid;
+  border-width: 0px;
+}
+
+[data-level="0"] .line-progression:after {
+  width: 2%;
+  border-width: 0px;
+}
+
+[data-level="1"] .line-progression:after {
+  width: 33%;
+  -webkit-animation-name: pulse1;
+          animation-name: pulse1;
+  border-color: rgba(255, 255, 255, 0.3);
+  border-width: 1px;
+}
+
+[data-level="2"] .line-progression:after {
+  width: 66%;
+  -webkit-animation-name: pulse2;
+          animation-name: pulse2;
+  border-color: rgba(255, 255, 255, 0.6);
+  border-width: 1px;
+}
+
+[data-level="3"] {
+  color: #f7c926 !important;
+}
+[data-level="3"] .line-label {
+  -webkit-animation: glow 0.6s ease-in-out infinite alternate;
+          animation: glow 0.6s ease-in-out infinite alternate;
+  color: #FFFFFF !important;
+}
+[data-level="3"] .line-progression:after {
+  width: 100%;
+  -webkit-animation-name: pulse3;
+          animation-name: pulse3;
+  border-color: white;
+  border-width: 1px !important;
+  -webkit-animation-duration: 2s !important;
+          animation-duration: 2s !important;
+  color: #FFFFFF;
+}
+
+@-webkit-keyframes pulse1 {
+  0% {
+    box-shadow: 0px 0px 0px 0px white;
+  }
+  50% {
+    box-shadow: 0px 0px 30px 0px white;
+  }
+  100% {
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes pulse1 {
+  0% {
+    box-shadow: 0px 0px 0px 0px white;
+  }
+  50% {
+    box-shadow: 0px 0px 30px 0px white;
+  }
+  100% {
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0);
+  }
+}
+@-webkit-keyframes pulse2 {
+  0% {
+    box-shadow: 0px 0px 0px 0px white;
+  }
+  50% {
+    box-shadow: 0px 0px 30px 5px white;
+  }
+  100% {
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0);
+  }
+}
+@keyframes pulse2 {
+  0% {
+    box-shadow: 0px 0px 0px 0px white;
+  }
+  50% {
+    box-shadow: 0px 0px 30px 5px white;
+  }
+  100% {
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0);
+  }
+}
+@-webkit-keyframes pulse3 {
+  0% {
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0px 0px 6px 10px rgba(255, 255, 255, 0);
+  }
+}
+@keyframes pulse3 {
+  0% {
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0px 0px 6px 10px rgba(255, 255, 255, 0);
+  }
+}
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 5px #f7c926, 0 0 10px #f7c926, 0 0 15px #f7c926, 0 0 30px #f7c926, 0 0 45px #f7c926, 0 0 60px #f7c926, 0 0 75px #f7c926;
+  }
+  to {
+    text-shadow: 0 0 10px #f7c926, 0 0 15px #f7c926, 0 0 20px #f7c926, 0 0 25px #f7c926, 0 0 30px #f7c926, 0 0 35px #f7c926, 0 0 40px #f7c926;
+  }
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #f7c926, 0 0 10px #f7c926, 0 0 15px #f7c926, 0 0 30px #f7c926, 0 0 45px #f7c926, 0 0 60px #f7c926, 0 0 75px #f7c926;
+  }
+  to {
+    text-shadow: 0 0 10px #f7c926, 0 0 15px #f7c926, 0 0 20px #f7c926, 0 0 25px #f7c926, 0 0 30px #f7c926, 0 0 35px #f7c926, 0 0 40px #f7c926;
+  }
+}
+@-webkit-keyframes glowBar {
+  from {
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 30px currentColor, 0 0 45px currentColor, 0 0 60px currentColor, 0 0 75px currentColor;
+  }
+  to {
+    box-shadow: 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor, 0 0 25px currentColor, 0 0 30px currentColor, 0 0 35px currentColor, 0 0 40px currentColor;
+  }
+}
+@keyframes glowBar {
+  from {
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 30px currentColor, 0 0 45px currentColor, 0 0 60px currentColor, 0 0 75px currentColor;
+  }
+  to {
+    box-shadow: 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor, 0 0 25px currentColor, 0 0 30px currentColor, 0 0 35px currentColor, 0 0 40px currentColor;
+  }
+}
